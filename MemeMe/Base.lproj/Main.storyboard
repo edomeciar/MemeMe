@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -83,7 +83,9 @@
                         <outlet property="BottomTextFiled" destination="JNa-fh-2Od" id="qH4-PW-s8A"/>
                         <outlet property="CameraButton" destination="ofs-x8-HGG" id="ifo-6Q-95x"/>
                         <outlet property="ImagePickerView" destination="8yA-8K-0fH" id="bYF-01-vgO"/>
+                        <outlet property="NavBar" destination="5sl-Ao-20M" id="84Z-LE-AaF"/>
                         <outlet property="TopTextField" destination="DEN-ae-Sub" id="ddY-g0-EuM"/>
+                        <outlet property="toolbar" destination="7GQ-SZ-NnL" id="CoO-4y-FWJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

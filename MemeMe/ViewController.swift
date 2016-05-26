@@ -20,11 +20,16 @@ class ViewController: UIViewController,
     @IBOutlet weak var TopTextField: UITextField!
     @IBOutlet weak var BottomTextFiled: UITextField!
     
-    var memedImage: UIImage
+    
+    @IBOutlet weak var Toolbar: UIToolbar!
+    
+    @IBOutlet weak var NavBar: UIToolbar!
     
     //Text Field Delegates Objects
     let topDelegate = TopTextFieldDelegate()
     let bottomDelegate = BottomTextFiledDelegate()
+    
+    var memeObject: Meme!
     
     
     let memeTextAttributes = [
@@ -44,7 +49,28 @@ class ViewController: UIViewController,
         BottomTextFiled.text = "BOTTOM"
         BottomTextFiled.defaultTextAttributes = memeTextAttributes
         BottomTextFiled.textAlignment = NSTextAlignment.Center
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func generateMemedImage() -> UIImage {
+        Toolbar.hidden = true
+        NavBar.hidden = true
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+    UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        Toolbar.hidden = false
+        NavBar.hidden = false
+        return memedImage
+    }
+    
+    func save(){
+        memeObject = Meme.init(pTopText: "top", pBottomText: "bottom", pImage: ImagePickerView.image!, pMemedImage: generateMemedImage())
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -122,10 +148,7 @@ class ViewController: UIViewController,
         print("PICK Album")
     }
     
-    func save() {
-        //Create the meme
-        
-    }
+   
     
     
 
