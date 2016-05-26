@@ -12,9 +12,15 @@ import UIKit
 class Meme: NSObject{
     
     var TopText: String = ""
+    var BottomText: String = ""
+    var Image: UIImage!
+    var MemedImage: UIImage! = nil
     
-    func init(pTopText: String) {
+    init(pTopText: String, pBottomText: String, pImage: UIImage, pMemedImage: UIImage) {
         TopText = pTopText
+        BottomText = pBottomText
+        Image = pImage
+        MemedImage = pMemedImage
     }
     
 }
