@@ -38,7 +38,7 @@ class ViewController: UIViewController,
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : 4
+        NSStrokeWidthAttributeName : -3.0
     ]
     
     override func viewDidLoad() {
