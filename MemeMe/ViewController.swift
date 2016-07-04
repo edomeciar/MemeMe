@@ -25,6 +25,8 @@ class ViewController: UIViewController,
     
     @IBOutlet weak var NavBar: UIToolbar!
     
+    @IBOutlet weak var ShareBarButtonItem: UIBarButtonItem!
+    
     //Text Field Delegates Objects
     let topDelegate = TopTextFieldDelegate()
     let bottomDelegate = BottomTextFiledDelegate()
@@ -49,7 +51,7 @@ class ViewController: UIViewController,
         BottomTextFiled.text = "BOTTOM"
         BottomTextFiled.defaultTextAttributes = memeTextAttributes
         BottomTextFiled.textAlignment = NSTextAlignment.Center
-        
+        ShareBarButtonItem.enabled = false
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -85,9 +87,9 @@ class ViewController: UIViewController,
     }
     
     func subscribeToKeyboardNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotification(){
@@ -124,6 +126,7 @@ class ViewController: UIViewController,
                 print("NOT selected")
             }
             dismissViewControllerAnimated(true, completion: nil)
+            ShareBarButtonItem.enabled = true
     }
     
     
@@ -149,6 +152,11 @@ class ViewController: UIViewController,
     }
     
    
+    @IBAction func ShareAction(sender: AnyObject) {
+        save()
+        let vc = UIActivityViewController(activityItems: [memeObject.MemedImage], applicationActivities: [])
+        presentViewController(vc, animated: true, completion: nil)
+    }
     
     
 
