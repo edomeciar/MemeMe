@@ -98,11 +98,16 @@ class ViewController: UIViewController,
     }
     
     func keyboardWillShow(notification: NSNotification){
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if BottomTextFiled.isFirstResponder(){
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        
     }
     
     func keyboardWillHide(notification: NSNotification){
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        if BottomTextFiled.isFirstResponder(){
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) ->CGFloat{
