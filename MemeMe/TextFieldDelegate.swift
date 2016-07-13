@@ -1,19 +1,25 @@
 //
-//  BottomTextFieldDelegate.swift
+//  TextFieldDelegate.swift
 //  MemeMe
 //
-//  Created by Eduard Meciar on 04/03/16.
+//  Created by Eduard Meciar on 13/07/16.
 //  Copyright © 2016 Eduard Meciar. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class BottomTextFiledDelegate: NSObject, UITextFieldDelegate{
+class TextFieldDelegate: NSObject, UITextFieldDelegate {
+    
+    var Deftext = ""
+    
+    init(pDefText: String){
+        Deftext = pDefText
+    }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField.text == "BOTTOM"{
-                textField.text = ""
+        if textField.text == Deftext{
+            textField.text = ""
         }
         
     }
@@ -22,5 +28,4 @@ class BottomTextFiledDelegate: NSObject, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
-    
 }

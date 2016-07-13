@@ -28,8 +28,8 @@ class ViewController: UIViewController,
     @IBOutlet weak var ShareBarButtonItem: UIBarButtonItem!
     
     //Text Field Delegates Objects
-    let topDelegate = TopTextFieldDelegate()
-    let bottomDelegate = BottomTextFiledDelegate()
+    let topDelegate = TextFieldDelegate(pDefText: "TOP")
+    let bottomDelegate = TextFieldDelegate(pDefText: "BOTTOM")
     
     var memeObject: Meme!
     
