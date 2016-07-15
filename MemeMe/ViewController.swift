@@ -43,18 +43,21 @@ class ViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TopTextField.delegate = topDelegate
-        TopTextField.text = "TOP"
-        TopTextField.defaultTextAttributes = memeTextAttributes
-        TopTextField.textAlignment = NSTextAlignment.Center
-        BottomTextFiled.delegate = bottomDelegate
-        BottomTextFiled.text = "BOTTOM"
-        BottomTextFiled.defaultTextAttributes = memeTextAttributes
-        BottomTextFiled.textAlignment = NSTextAlignment.Center
+        initTextField(TopTextField, pText: "TOP", pDelegate: topDelegate)
+        initTextField(BottomTextFiled, pText: "BOTTOM", pDelegate: bottomDelegate)
         ShareBarButtonItem.enabled = false
         
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func initTextField(pTextField: UITextField, pText: String, pDelegate: UITextFieldDelegate){
+        pTextField.delegate = pDelegate
+        pTextField.text = pText
+        pTextField.defaultTextAttributes = memeTextAttributes
+        pTextField.textAlignment = NSTextAlignment.Center
+        pTextField.minimumFontSize = 40
+        pTextField.adjustsFontSizeToFitWidth = false
     }
     
     func generateMemedImage() -> UIImage {
