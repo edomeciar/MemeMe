@@ -76,6 +76,10 @@ class ViewController: UIViewController,
     
     func save(){
         memeObject = Meme.init(pTopText: "top", pBottomText: "bottom", pImage: ImagePickerView.image!, pMemedImage: generateMemedImage())
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(memeObject)
     }
     
     override func viewWillAppear(animated: Bool) {
