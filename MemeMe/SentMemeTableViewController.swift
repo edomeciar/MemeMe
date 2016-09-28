@@ -30,6 +30,7 @@ class MameTableViewController : UITableViewController{
         
         // Set the name and image
         cell.textLabel?.text = meme.TopText
+        
         cell.imageView?.image = meme.Image
         
         return cell
