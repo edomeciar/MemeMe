@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,
+class MemeViewController: UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate
 {
@@ -80,6 +80,7 @@ class ViewController: UIViewController,
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(memeObject)
+        print(appDelegate.memes.count)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,9 +95,9 @@ class ViewController: UIViewController,
     }
     
     func subscribeToKeyboardNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotification(){
@@ -168,6 +169,9 @@ class ViewController: UIViewController,
         save()
         let vc = UIActivityViewController(activityItems: [memeObject.MemedImage], applicationActivities: [])
         presentViewController(vc, animated: true, completion: nil)
+        vc.completionWithItemsHandler = {(activityType:String?, completed: Bool, returnedItems: [AnyObject]?, error: NSError?) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     
