@@ -143,33 +143,32 @@ class MemeViewController: UIViewController,
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func PickImageFromCamera(sender: AnyObject) {
+    func pickImageFromAlbum(chosenSource: UIImagePickerControllerSourceType) {
         let pickerControler = UIImagePickerController()
         pickerControler.delegate = self
-        pickerControler.sourceType = UIImagePickerControllerSourceType.Camera
+        pickerControler.sourceType = chosenSource
         self.presentViewController(pickerControler, animated: true, completion: nil)
-        print("PICK Camera")
+    }
+    
+    @IBAction func PickImageFromCamera(sender: AnyObject) {
+        pickImageFromAlbum(.Camera)
     }
 
     @IBAction func PickImageFromAlbum(sender: AnyObject) {
-        let pickerControler = UIImagePickerController()
-        pickerControler.delegate = self
-        pickerControler.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(pickerControler, animated: true, completion: nil)
-        print("PICK Album")
+        pickImageFromAlbum(.PhotoLibrary)
     }
     
    
     @IBAction func ShareAction(sender: AnyObject) {
-        save()
         let vc = UIActivityViewController(activityItems: [memeObject.MemedImage], applicationActivities: [])
         presentViewController(vc, animated: true, completion: nil)
         vc.completionWithItemsHandler = {(activityType:String?, completed: Bool, returnedItems: [AnyObject]?, error: NSError?) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+            if completed {
+                self.save()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
+        
     }
-    
-    
-
 }
 
