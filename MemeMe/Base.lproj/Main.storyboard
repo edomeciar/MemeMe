@@ -38,7 +38,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DEN-ae-Sub">
-                                <rect key="frame" x="40" y="105" width="523" height="17"/>
+                                <rect key="frame" x="40" y="84" width="523" height="17"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0041832890070000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -85,7 +85,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5sl-Ao-20M" secondAttribute="trailing" constant="-20" id="ftz-Pp-sp0"/>
                             <constraint firstItem="5sl-Ao-20M" firstAttribute="width" secondItem="7GQ-SZ-NnL" secondAttribute="width" id="g2K-PB-ldT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5sl-Ao-20M" secondAttribute="bottom" id="mUG-Va-utU"/>
-                            <constraint firstItem="DEN-ae-Sub" firstAttribute="top" secondItem="7GQ-SZ-NnL" secondAttribute="bottom" constant="61" id="wkJ-7S-isl"/>
+                            <constraint firstItem="DEN-ae-Sub" firstAttribute="top" secondItem="7GQ-SZ-NnL" secondAttribute="bottom" constant="40" id="wkJ-7S-isl"/>
                         </constraints>
                     </view>
                     <connections>

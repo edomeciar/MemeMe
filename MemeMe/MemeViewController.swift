@@ -110,14 +110,14 @@ class MemeViewController: UIViewController,
     
     func keyboardWillShow(notification: NSNotification){
         if BottomTextFiled.isFirstResponder(){
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = -getKeyboardHeight(notification)
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification){
         if BottomTextFiled.isFirstResponder(){
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
         }
     }
     
