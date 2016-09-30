@@ -51,6 +51,10 @@ class MemeViewController: UIViewController,
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func initTextField(pTextField: UITextField, pText: String, pDelegate: UITextFieldDelegate){
         pTextField.delegate = pDelegate
         pTextField.text = pText
@@ -74,13 +78,12 @@ class MemeViewController: UIViewController,
         return memedImage
     }
     
-    func save(){
-        memeObject = Meme.init(pTopText: "top", pBottomText: "bottom", pImage: ImagePickerView.image!, pMemedImage: generateMemedImage())
+    func save(generatedMemedImage: UIImage){
+        memeObject = Meme.init(pTopText: "top", pBottomText: "bottom", pImage: ImagePickerView.image!, pMemedImage: generatedMemedImage)
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(memeObject)
-        print(appDelegate.memes.count)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -149,6 +152,9 @@ class MemeViewController: UIViewController,
         pickerControler.sourceType = chosenSource
         self.presentViewController(pickerControler, animated: true, completion: nil)
     }
+    @IBAction func CancelAction(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func PickImageFromCamera(sender: AnyObject) {
         pickImageFromAlbum(.Camera)
@@ -160,11 +166,12 @@ class MemeViewController: UIViewController,
     
    
     @IBAction func ShareAction(sender: AnyObject) {
-        let vc = UIActivityViewController(activityItems: [memeObject.MemedImage], applicationActivities: [])
+        let generatedImage = generateMemedImage()
+        let vc = UIActivityViewController(activityItems: [generatedImage], applicationActivities: [])
         presentViewController(vc, animated: true, completion: nil)
         vc.completionWithItemsHandler = {(activityType:String?, completed: Bool, returnedItems: [AnyObject]?, error: NSError?) in
             if completed {
-                self.save()
+                self.save(generatedImage)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
